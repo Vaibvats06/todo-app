@@ -10,3 +10,10 @@ Currently, two official plugins are available:
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+
+#live on github
+1. npm install gh-pages --save-dev
+2. add path in vite.config.js file [base: '/todo-app/']
+3. update json file in script index ["deploy": "gh-pages -d dist"]
