@@ -17,3 +17,5 @@ If you are developing a production application, we recommend using TypeScript wi
 1. npm install gh-pages --save-dev
 2. add path in vite.config.js file [base: '/todo-app/']
 3. update json file in script index ["deploy": "gh-pages -d dist"]
+4. for deploy on gihub use [npm run build,npm run deploy]
+
