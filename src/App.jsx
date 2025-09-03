@@ -1,37 +1,43 @@
 import React, { useState } from 'react'
 import { useRef } from 'react';
-import Item from './components/Item'
+import TodoItems from './components/TodoItems';
+import styles from './App.module.css'
 
 const App = () => {
-  let [newdata, setNewdata]=useState();
-  const todoref=useRef();
-  const dateref=useRef();
-  const AddData=(todo,date)=>(
-    {
-      todo:todo.current.value,
-      datetodo:date.current.value
-    }
-
-  )
   
+  const TodoData = [
+    {
+      name: "Go to School",
+      date: "24/07/2025"
+    },
+    {
+      name: "Eat Samosa",
+      date: "24/07/2025"
+    },
+    {
+      name: "Learn React",
+      date: "03/08/2025"
+    },
+    {
+      name:"Watch movie after react",
+      date:"05/08/2025"
+    }
+  ]
 
-
- 
 
   return (
     <div className='px-[2vh] sm:px-[7vh] md:px-[9vh] lg:px-[11vh] py-5 app'>
-    <div className='flex flex-col gap-10 justify-center items-center border rounded bg-gray-50 py-8'>
-      <h1 className='text-center font-bold text-4xl'>Todo App</h1>
+    <div className='flex flex-col gap-5 justify-center items-center border rounded bg-gray-50 py-8'>
+      <h1 className={`${styles.toHi} text-center font-bold toHi text-xl sm:text-2xl md:text-3xl lg:text-4xl`}>Todo App</h1>
       <div className='flex gap-5'>
-        <input ref={todoref} className='border-black outline-1 text-md py-3 px-2 rounded-sm w-70 shadow-b-xs' type="text" placeholder='Enter Todo Here'/>
-        <input ref={dateref} className='border-black outline-1 text-md py-3  px-20 rounded-sm w-70 shadow-b-xs' type="date" name="" id="" />
-        <button onClick={() => {
-              setNewdata(AddData(todoref,dateref));
-              console.log(newdata.todoref)
-
-            }} className='w-25 py-3 rounded-xl cursor-pointer bg-green-600 text-white font-semibold hover:bg-green-700'>Add</button>
+        <input className='border-black outline-1 text-md py-3 px-2 rounded-sm w-40 md:w-50 lg:w-70 shadow-b-xs' type="text" placeholder='Enter Todo Here'/>
+        <input  className='border-black outline-1 text-md py-3  px-20 rounded-sm w-40 md:w-50 lg:w-70 shadow-b-xs' type="date" name="" id="" />
+        <button className='w-20 md:w-25  py-3 rounded-xl cursor-pointer bg-green-600 text-white font-semibold hover:bg-green-700'>Add</button>
       </div>
-      <Item />
+      <TodoItems items={TodoData}/>
+    
+   
+
     </div>
     </div>
   )
