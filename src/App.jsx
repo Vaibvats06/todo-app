@@ -11,17 +11,31 @@ const App = () => {
   const Date=(event)=>{
     const newdate=event.target.value
     setInputDate(newdate)
-    }
-
+  }
+  
 
   const AddItem=()=>{
     let additem={name:inputValue,date:inputDate}
+    
+    if(inputDate===""&&inputValue===""){
+    alert("Assign any Task and date")
+  }
+  else if(inputValue===""){
+    alert("Assign any Task")
+
+  }
+  else if(inputDate===""){
+    alert("Assign any Date")
+
+  }
+  else{
     setTodoData([...TodoData,additem])
+  }
     
 
   }
-  
-  const [TodoData,setTodoData] = useState([
+
+  const ArrayData=[
     {
       name: "Go to School",
       date: "24/07/2025"
@@ -38,7 +52,15 @@ const App = () => {
       name:"Watch movie after react",
       date:"05/08/2025"
     }
-  ])
+  ]
+  
+  const [TodoData,setTodoData] = useState(ArrayData)
+  const deleteButton=(itemname)=>{
+    const newItem_afterDelete=TodoData.filter(item=>item.name!==itemname)
+    setTodoData(newItem_afterDelete)
+
+  }
+ 
 
 
   return (
@@ -50,7 +72,7 @@ const App = () => {
         <input onChange={Date} className='border-black outline-1 text-md py-3  px-20 rounded-sm w-40 md:w-50 lg:w-70 shadow-b-xs' type="date" name="" id="" />
         <button onClick={AddItem} className='w-20 md:w-25  py-3 rounded-xl cursor-pointer bg-green-600 text-white font-semibold hover:bg-green-700'>Add</button>
       </div>
-      <TodoItems items={TodoData}/>
+      <TodoItems items={TodoData} deleteButton={deleteButton}/>
     
    
 
